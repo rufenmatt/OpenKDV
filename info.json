@@ -1,0 +1,10 @@
+{
+"title": "Schweizer Temperaturentwicklung von 1871 bis 2019",
+"description": "OpenKDV 0.9 ist eine Webapplikation, die mittels Rohaten von MeteoSchweiz aufzeigt, wie sich das Temperaturmittel an verschiedenen Schweizer Messstationen seit 1871 monatlich, relativ zu verschiedenen Normperioden und -werten, entwickelt hat. Dazu wurden die Daten einer einfachen Transformation unterzogen und für eine Visualiserung basierend auf GPL lizenziertem D3 Example-Code von Mike Bostock aufbereitet.",
+"authors": [
+    {"name": "Mattia Rüfenacht", "email": "mattia.ruefenacht@students.unibe.ch"}   
+],
+"date": "2020-05-28",
+"category": "Umwelt",
+"software_license": "GNU General Public License v3"
+}

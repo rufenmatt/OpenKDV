@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="description" content="Visualisierungen von Klimadaten des Schweizer Meteos.">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      <title>OpenKDV 0.9</title>
+      <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+      <link rel="manifest" href="/images/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <link rel="stylesheet" href="normalize.css">
+      <link rel="stylesheet" href="climate-spirals.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+      <!-- getmdl -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>   
+      <!--getmdl-select-->   
+      <link rel="stylesheet" href="/getmdl-select/getmdl-select.min.css">
+      <script defer src="/getmdl-select/getmdl-select.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <link rel="stylesheet" href="//code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+            <a href="#home" class="mdl-layout__tab is-active">Home</a>
+            <a href="#temperaturmittel" class="mdl-layout__tab">Temperaturmittel</a>
+         </div>
+      </header>
+      <!-- Home -->
+      <main class="mdl-layout__content">
+      <div class="mdl-layout__tab-panel is-active" id="home">
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+         <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+               <h4>🏠 Home</h4>
+               <div>
+                  <p>OpenKDV 0.9 ist eine Webapplikation, die im Rahmen des Open Data Moduls FS2020 an der UniBe gebaut wurde. Die Inspiration zur Visualisierung kam vom Klimaforscher <a href="http://www.met.reading.ac.uk/~ed/home/index.php" target="_blank">Ed Hawkins</a>. Mittels Daten von MeteoSchweiz soll OpenKDV 0.9 aufzeigen, wie sich das Temperaturmittel an verschiedenen Schweizer Messstationen seit 1871 monatlich, relativ zu verschiedenen Normperioden und -werten, entwickelt hat.</p>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
+                  <canvas data-processing-sources="accel_vectors.pde"></canvas>
+                  <h6>Was sind Klima-Normwerte?</h6>
+                  <p>Das Klima wird oft mit einem langjährigen Durchschnitt von meteorologischen Messgrössen (Temperatur, Niederschlag, Sonnenscheindauer), sowie den Schwankungen um diesen Durchschnitt beschrieben. Ein 30-jähriger Durchschnitt wird als Normwert und die entsprechende, weltweit einheitliche Periode als Normperiode bezeichnet. Letztere werden regelmässig dem sich ändernden Klima angepasst.</p>
+                  <h6>Was bedeutet homogenisierte Klimareihen?</h6>
+                  <p>Die Messbedingungen, unter welchen meteorologische Daten erhoben werden, können sich im Lauf der Zeit verändern. Nur wenn der Einfluss solcher Veränderungen aus den Daten entfernt wird, lassen sich Aussagen zur vergangenen, langjährigen Klimaentwicklung machen. Dies wird mittels Homogenisierung der Daten erreicht.</p>
+                  <p>Die Homogenisierung entfernt diese künstlichen Veränderungen in den Messreihen. Historische Messwerte werden dabei an die heutigen Messbedingungen angepasst und somit nicht-klimatische Einflüsse aus den Messreihen entfernt. MeteoSchweiz hat in jahrelanger Tätigkeit eine bewährte Methodik für diese Aufgabe entwickelt und wendet sie systematisch auf Datenreihen ihrer Bodenmessstationen an.</p>
+                  <br/>
+                  <img class="image" src="/images/1578470898098.png" alt="datenreihen">
+                  <br/>
+                  <a href="https://www.meteoschweiz.admin.ch/home/klima/schweizer-klima-im-detail/homogene-messreihen-ab-1864/homogenisierung-von-klima-messreihen.html" target="_blank">
+                     <p>Entwicklung der Anzahl Sommertage (Maximum-Temperatur >= 25°C) pro Jahr an der Messstation Zürich / Fluntern seit 1901, gerechnet aus der originalen und der homogenen Temperatur-Messreihe. Der geglättete Verlauf (20-jähriger Gauss'scher Tiefpassfilter) ist rot eingezeichnet. <br>© MeteoSchweiz
+                  </a>
+                  </p>
+               </div>
+               <div class="mdl-card__actions">
+                  <a href="https://github.com/rufenmatt/OpenKDV" target="_blank" class="mdl-button">Source Code</a>
+               </div>
+            </div>
+      </section>
+      </div>
+      <!-- Avg. Temperature -->
+      <div class="mdl-layout__tab-panel is-active" id="temperaturmittel">
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+         <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text">
+               <h4>🌡 Temperaturmittel</h4>
+               <div>
+                  <p>Das Temperaturmittel beschreibt die im Mittel gemessenen und homogenisierten Temperaturen an verschiedenen Messstationen. Diese Daten werden zur Analyse und Kommunikation der langjährigen Temperaturentwicklung in der Schweiz verwendet.</p>
+                  <p>Der <strong>Farbcode</strong> der Visualisierung soll beim Spiral Chart zur Unterscheidung der Werte über die Zeit helfen. Dabei entspricht Violett den zeitlich entferntesten Werten und Gelb den naheliegensten.</p>
+               </div>
+               <br/>
+               <div class='dropdown-group'>      
+                  <!-- Select with fixed height -->                                
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                     <input type="text" value="" class="mdl-textfield__input" id="sample7" readonly>
+                     <input type="hidden" value="" name="sample7">
+                     <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                     <label for="sample7" class="mdl-textfield__label">Messstation</label>
+                     <ul for="sample7" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li class="mdl-menu__item" data-val='optionBAS'>Basel</li>
+                        <li class="mdl-menu__item" data-val='optionBER'>Bern</li>
+                        <li class="mdl-menu__item" data-val='optionCHM'>Chaumont</li>
+                        <li class="mdl-menu__item" data-val='optionGSB'>Col du Grand St-Bernard</li>
+                        <li class="mdl-menu__item" data-val='optionDAV'>Davos</li>
+                        <li class="mdl-menu__item" data-val='optionENG'>Engelberg</li>
+                        <li class="mdl-menu__item" data-val='optionGVE'>Genf</li>
+                        <li class="mdl-menu__item" data-val='optionLUG'>Lugano</li>
+                        <li class="mdl-menu__item" data-val='optionSIA'>Segl-Maria</li>
+                        <li class="mdl-menu__item" data-val='optionSIO'>Sion</li>
+                        <li class="mdl-menu__item" data-val='optionSAE'>Säntis</li>
+                        <li class="mdl-menu__item" data-val='optionSMA'>Zürich/Fluntern</li>
+                     </ul>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                     <input type="text" value="" class="mdl-textfield__input" id="sample6" readonly>
+                     <input type="hidden" value="" name="sample6">
+                     <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                     <label for="sample6" class="mdl-textfield__label">Normperiode</label>
+                     <ul for="sample6" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li class="mdl-menu__item" data-val='1871-1900'>1871-1900</li>
+                        <li class="mdl-menu__item" data-val='1961-1990'>1961-1990</li>
+                        <li class="mdl-menu__item" data-val='1981-2010'>1981-2010</li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="container">
+                  <nav id="menu">
+                     <header class="menu-header">
+                        <span class="menu-header-title"></span>
+                     </header>
+                  </nav>
+                  <main id="panel">
+                     <span class="icons">
+                     <span id="status" class="icon-pause2"></span>
+                     </span>
+                     <div id="viz">
+                        <div class="col">
+                           <h4>Temperaturmittel von <strong><span id="station_token"></span></strong> in °C relativ zu Normwert von <strong><span id="period_token"></span></strong>.</h4>
+                           <div id="temperature-spiral"></div>
+                           <br/>
+                           <div id="temperature-linear" class="chart-linear"></div>
+                        </div>
+                     </div>
+                     <br/>                                        
+                     <div>
+                        <h6>Datentransformation</h6>
+                        <p>Die gemessenen Durchschnittswerte eines jeden Monats wurden für die Visualisierung einer einfachen Transformation unterzogen. Die dargestellten Monatswerte entsprechen der Varianz zwischen dem homogenisierten Messwert und dem Normwert des Monats der jeweiligen Normperiode.</p>
+                     </div>
+               </div>
+               <div class="mdl-card__actions">
+               <a href="https://github.com/rufenmatt/OpenKDV/tree/master/data" target="_blank" class="mdl-button">Raw Data</a>
+               </div>
+            </div>
+      </section>
+      </div>
+      </main>
+      <script src="mobile-detect.min.js"></script>
+      <script src="slideout.min.js"></script> 
+      <script src="d3.v4.min.js"></script>
+      <script src="bundle.js"></script>                     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+      <script src="//code.getmdl.io/1.3.0/material.min.js"></script>
+   </body>
