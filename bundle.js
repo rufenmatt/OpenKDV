@@ -508,7 +508,12 @@
         var load = require("./load-data.js");
         var viz = require("./viz.js");
         app.showMobileWarning();
-        app.width = 600;
+        function GetSize() {
+            var clientWidth = document.getElementById('cardsize').clientWidth;
+            var adjustedWidth = clientWidth - clientWidth*0.4;
+            return adjustedWidth;
+        }   
+        app.width = GetSize();
         app.height = app.width;
         app.radius = app.width / 2 - 25;
         
